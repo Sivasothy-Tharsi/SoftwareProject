@@ -1,13 +1,23 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MapScreen from "../home";
+import ProfileScreen from "./Profile/ProfileScreen";
+import SettingsScreen from "./Setting/SettingScreen";
+import HelpScreen from "./Help/HelpScreen";
+import CustomDrawerContent from "./DrawerContent";
+import WalletScreen from "./Payment/MyWallet";
+import ContactScreen from "./Contact/Contact";
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator drawerContent={CustomDrawerContent}>
       <Drawer.Screen name="Home" component={MapScreen} />
-      {/* Add more screens to the drawer navigator as needed */}
+      <Drawer.Screen name="Profile" component={ProfileScreen} />
+      <Drawer.Screen name="Settings" component={SettingsScreen} />
+      <Drawer.Screen name="Help" component={HelpScreen} />
+      <Drawer.Screen name="Wallet" component={WalletScreen} />
+      <Drawer.Screen name="Contact" component={ContactScreen} />
     </Drawer.Navigator>
   );
 };
