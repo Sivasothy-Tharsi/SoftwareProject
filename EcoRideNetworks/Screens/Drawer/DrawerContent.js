@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Switch, StyleSheet } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icons from "react-native-vector-icons/FontAwesome";
-import SVGComponent from "../../images/svg/SVG";
+
 
 const CustomDrawerContent = ({ navigation }) => {
 
@@ -38,6 +36,7 @@ const CustomDrawerContent = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate("Contact")} style={styles.drawerItem}>
                 <Text style={styles.drawerItemText}>Contact</Text>
             </TouchableOpacity>
+
             <View style={styles.drawerItem}>
                 <Text style={styles.drawerItemText}>Dark Mode</Text>
                 <View style={styles.darkModeContainer}>
@@ -50,7 +49,7 @@ const CustomDrawerContent = ({ navigation }) => {
             <TouchableOpacity onPress={handleLogout} style={styles.drawerItem}>
                 <Text style={styles.drawerItemText}>Logout</Text>
             </TouchableOpacity>
-        
+            
         </View>
     );
 };
@@ -72,7 +71,6 @@ const styles = StyleSheet.create({
     },
     drawerItemText: {
       fontSize: 16,
-     // marginLeft: 10,
       
     },
     darkModeContainer: {

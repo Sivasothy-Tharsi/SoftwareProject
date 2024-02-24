@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     image: {
-        width: '90%',
+        width: '100%',
         maxHeight: '50%',
-        aspectRatio: 1, // Adjust aspect ratio according to your image
+        aspectRatio: 1.0, // Adjust aspect ratio according to your image
         marginBottom: 20,
         
     },

@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { List, Divider } from "react-native-paper";
-import Icon from "react-native-vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+// import { Icon } from "react-native-vector-icons/MaterialCommunityIcons"
 
 const HelpScreen = () => {
   const [expandedSection, setExpandedSection] = useState(null);
