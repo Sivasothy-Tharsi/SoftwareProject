@@ -5,7 +5,11 @@ import { myColors } from "./utils/myColors";
 
 
 
-const Success = () => {
+const Success = (props) => {
+    const handleSuccess = () => {
+        props.navigation.navigate('drawer',{ userData: props.route.params.userData });
+      };
+    
     return(
         <SafeAreaView style={{alignItems:'center', flex:1}}>
             <Image source={require('../../images/assets/Success.png')}
@@ -17,7 +21,7 @@ const Success = () => {
                 Congratulations! You have been successfully authenticated
             </Text>
             <TouchableOpacity 
-                style={styles.SuccessBtn}>
+                style={styles.SuccessBtn} onPress={handleSuccess}>
                 <Text style={styles.SuccessBtnText}>Continue</Text>
             </TouchableOpacity>
         </SafeAreaView>

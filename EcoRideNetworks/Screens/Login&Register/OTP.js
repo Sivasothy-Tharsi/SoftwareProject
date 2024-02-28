@@ -116,14 +116,14 @@ const OTP = (props) => {
   const handleVerify = () => {
     const enteredOTP = otp.join('');
     if (enteredOTP === '123456') {
-      // Navigate to success screen if OTP is correct
-      props.navigation.navigate('Success');
+      
+      props.navigation.navigate('Success', { userData: props.route.params.userData });
     } else {
-      // Handle incorrect OTP
+     
       alert('Incorrect OTP. Please try again.');
-      // Clear OTP inputs
+     
       setOtp(['', '', '', '', '', '']);
-      // Focus on the first OTP input
+    
       inputRefs.current[0].focus();
     }
   };

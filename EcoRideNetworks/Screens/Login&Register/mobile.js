@@ -14,12 +14,12 @@ const MobileForm = (props) => {
             // Make a POST request to your backend login endpoint
             const response = await axios.post('YOUR_BACKEND_LOGIN_ENDPOINT', {
                 mobilenumber: mobilenumber,
-                // Add other necessary fields like password here
+                
             });
             // Handle successful login, navigate to the OTP screen
-            props.props.navigation.navigate("OTP");
+            props.props.navigation.navigate("OTP", { userData: response.data });
         } catch (error) {
-            // Handle login error
+         
             setError('Invalid mobile number');
         }
     };

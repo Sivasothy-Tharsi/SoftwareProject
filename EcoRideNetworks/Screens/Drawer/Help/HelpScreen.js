@@ -1,9 +1,6 @@
-
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { List, Divider } from "react-native-paper";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-// import { Icon } from "react-native-vector-icons/MaterialCommunityIcons"
 
 const HelpScreen = () => {
   const [expandedSection, setExpandedSection] = useState(null);
@@ -19,14 +16,14 @@ const HelpScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>EcoRideNetworks Help</Text>
-      <Divider style={{ marginBottom: 30, marginTop: 5, height: 10, borderColor: "rgba(0, 0, 0, 0.2)" }} />
+      <Divider style={styles.divider} />
       <View style={styles.helpContainer}>
         <List.Accordion
           title="Starting a ride"
           expanded={expandedSection === 1}
           onPress={() => handlePress(1)}
           right={() => (
-            <Icon name={expandedSection === 1 ? "md-arrow-dropup" : "md-arrow-dropdown"} size={24} color="black" />
+            expandedSection === 1 ? <Image source={require('../../../images/icons/arrowUp_icon.png')} style={styles.arrowIcon} /> : <Image source={require('../../../images/icons/arrowDown_icon.png')} style={styles.arrowIcon} />
           )}
         >
           <View style={styles.expandedContainer}>
@@ -35,13 +32,14 @@ const HelpScreen = () => {
         </List.Accordion>
       </View>
 
+
       <View style={styles.helpContainer}>
         <List.Accordion
           title="Parking and ending ride"
           expanded={expandedSection === 2}
           onPress={() => handlePress(2)}
           right={() => (
-            <Icon name={expandedSection === 2 ? "md-arrow-dropup" : "md-arrow-dropdown"} size={24} color="black" />
+            expandedSection === 2 ? <Image source={require('../../../images/icons/arrowUp_icon.png')} style={styles.arrowIcon} /> : <Image source={require('../../../images/icons/arrowDown_icon.png')} style={styles.arrowIcon} />
           )}
         >
           <View style={styles.expandedContainer}>
@@ -56,7 +54,7 @@ const HelpScreen = () => {
           expanded={expandedSection === 3}
           onPress={() => handlePress(3)}
           right={() => (
-            <Icon name={expandedSection === 3 ? "md-arrow-dropup" : "md-arrow-dropdown"} size={24} color="black" />
+            expandedSection === 3 ? <Image source={require('../../../images/icons/arrowUp_icon.png')} style={styles.arrowIcon} /> : <Image source={require('../../../images/icons/arrowDown_icon.png')} style={styles.arrowIcon} />
           )}
         >
           <View style={styles.expandedContainer}>
@@ -71,8 +69,8 @@ const HelpScreen = () => {
           expanded={expandedSection === 4}
           onPress={() => handlePress(4)}
           right={() => (
-            <Icon name={expandedSection === 4 ? "md-arrow-dropup" : "md-arrow-dropdown"} size={24} color="black" />
-          )}
+            expandedSection === 4 ? <Image source={require('../../../images/icons/arrowUp_icon.png')} style={styles.arrowIcon} /> : <Image source={require('../../../images/icons/arrowDown_icon.png')} style={styles.arrowIcon} />
+            )}
         >
           <View style={styles.expandedContainer}>
             <Text style={styles.expandedTextStyle}>Certainly! Here's a revised version without mentioning the membership plan: "Effortlessly manage your EcoRide Networks account through the 'Profile' or 'Account Settings' section in the app. Easily update personal information, modify billing details, and enjoy a seamless, personalized experience. For additional assistance, use the 'Contact Us' feature for prompt support. Happy riding with EcoRide Networks!"</Text>
@@ -86,14 +84,15 @@ const HelpScreen = () => {
           expanded={expandedSection === 5}
           onPress={() => handlePress(5)}
           right={() => (
-            <Icon name={expandedSection === 5 ? "md-arrow-dropup" : "md-arrow-dropdown"} size={24} color="black" />
-          )}
+            expandedSection === 5 ? <Image source={require('../../../images/icons/arrowUp_icon.png')} style={styles.arrowIcon} /> : <Image source={require('../../../images/icons/arrowDown_icon.png')} style={styles.arrowIcon} />
+            )}
         >
           <View style={styles.expandedContainer}>
             <Text>To delete your EcoRide Networks account, go to 'Account Settings' or 'Profile' in the app, find 'Delete My Account,' and follow the prompts. For assistance, contact customer service through the 'Contact Us' feature. Thank you for your time with EcoRide Networks!</Text>
           </View>
         </List.Accordion>
       </View>
+
     </View>
   );
 };
@@ -102,13 +101,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-
   },
   header: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
-    color: "#000"
+    color: "#000",
+  },
+  divider: {
+    marginBottom: 30,
+    marginTop: 5,
+    height: 10,
+    borderColor: "rgba(0, 0, 0, 0.2)",
   },
   helpContainer: {
     borderRadius: 10,
@@ -118,18 +122,21 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.2)",
     borderWidth: 1,
   },
+  expandedContainer: {
+    backgroundColor: "#f0f0f0",
+    padding: 10,
+    borderRadius: 5,
+  },
   expandedTextStyle: {
     fontSize: 16,
     lineHeight: 24,
     marginTop: 10,
     textAlign: "justify",
   },
-  expandedContainer: {
-    backgroundColor: "#f0f0f0",
-    padding: 10,
-    borderRadius: 5,
+  arrowIcon: {
+    width: 24,
+    height: 24,
   },
-
 });
 
 export default HelpScreen;
@@ -137,33 +144,3 @@ export default HelpScreen;
 
 
 
-
-// import React from "react";
-// import { View, Text, StyleSheet } from "react-native";
-
-// const HelpScreen = () => {
-//   const [expanded, setExpanded] = useState(false);
-
-//   const handlePress = () => setExpanded(!expanded);
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.header}>Help Screen</Text>
-//       <Text>Placeholder for help content</Text>
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   header: {
-//     fontSize: 24,
-//     fontWeight: "bold",
-//     marginBottom: 20,
-//   },
-// });
-
-// export default HelpScreen;

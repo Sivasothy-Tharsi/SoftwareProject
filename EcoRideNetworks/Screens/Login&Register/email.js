@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, Dimensions } from "react-native";
-import {axios} from "react-native-axios"
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView } from "react-native";
+// import {axios} from "react-native-axios"
+import axios from 'axios';
 
 const { width, height } = Dimensions.get('screen');
 const formWidth = width - 50;
@@ -9,23 +10,53 @@ const EmailForm = (props) => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
 
+    // const handleLogin = async () => {
+    //     try {
+    //         const response = await axios.post('http://192.168.8.155:5000/api/v1/users/login', {
+    //             email: email,
+    //         });
+    //         props.props.navigation.navigate("OTP", { userData: response.data });
+    //     } catch (error) {
+    //         console.error("Login Error:", error); // Log the error for debugging
+    //         if (error.response && error.response.data && error.response.data.message) {
+    //             setError(error.response.data.message);
+    //         } else {
+    //             setError('An error occurred during login');
+    //         }
+    //     }
+    // };
+
     const handleLogin = async () => {
+        console.log("Email:", email);
+     
+    
         try {
-            // Make a POST request to your backend login endpoint
-            const response = await axios.post('YOUR_BACKEND_LOGIN_ENDPOINT', {
-                email: email,
-                // Add other necessary fields like password here
-            });
-            // Handle successful login, navigate to the OTP screen
-            props.props.navigation.navigate("OTP");
-        } catch (error) {
-            // Handle login error
-            setError('Invalid email');
+          const response = await axios.post("http://192.168.8.155:5000/api/v1/users/login", {
+            email: email,
+        });
+        console.log(response);
+        if (response && response.data) {
+          console.log(response.data);
+          props.props.navigation.navigate("OTP")
+        } else {
+          // Handle the case where the response doesn't contain the expected data
+          console.error("Unexpected response format:", response);
         }
-    };
+      } catch (error) {
+        console.log(error);
+        if (error.response && error.response.data && error.response.data.message) {
+          setLoginError(error.response.data.message);
+        } else {
+          // Handle other types of errors
+          setLoginError("An error occurred during login.");
+        }
+      }
+      
+      };
+    
 
     return (
-        <View style={styles.form}>
+        <KeyboardAvoidingView style={styles.form}>
             <Text>LogIn with Email</Text>
             <TextInput
                 placeholder="      Email Address"
@@ -43,7 +74,7 @@ const EmailForm = (props) => {
                 <Text onPress={() => props.props.navigation.navigate("SignUp")} style={{ color: '#009EFD' }}>  Sign Up</Text>
             </View>
             {error ? <Text style={{ color: 'red', marginTop: 10 }}>{error}</Text> : null}
-        </View>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -157,3 +188,5 @@ const styles = StyleSheet.create({
         
 //     }
 // })
+
+
